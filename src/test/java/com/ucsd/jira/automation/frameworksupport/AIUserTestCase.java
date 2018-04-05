@@ -22,31 +22,23 @@ public abstract class AIUserTestCase extends JiraTestCase {
 
     public void genericSearch() {
         LOG(true, "---------- Generic Search. Likelihood=%s ----------", HIGH_LEVEL);
-        webElementVisible(Constants.LOGO_IMAGE);
-        webAction(Constants.QUERY_INPUT, COMMON_SEARCH_TERM);
-        webAction(Constants.SEARCH_BUTTON);
-        webElementTextEquals(combine(Constants.VARIABLE_BY_TEXT_ANCHOR, COMMON_SEARCH_TERM), COMMON_SEARCH_TERM);
+        webElementVisible(Constants.LOGO_HEADING);
+        //Add here
     }
 
     public void advancedSearch() {
         LOG(true, "---------- Advanced Search. Likelihood=%s ----------", HIGH_LEVEL);
-        redirect(Constants.ADVANCED_SEARCH_URL);
-        webAction(Constants.GROUP_ID_INPUT, "com.pacificwebconsulting.core");
-        webAction(Constants.COORDINATE_SEARCH_BUTTON);
-        webElementTextEquals(Constants.QUERY_INPUT, "g:\"com.pacificwebconsulting.core\"");
+        //Add here
     }
 
     public void quickStats() {
         LOG(true, "---------- View Quick Stats. Likelihood=%s ----------", LOW_LEVEL);
-        webAction(Constants.QUICK_STATS_ANCHOR);
-        webElementVisible(Constants.STATISTICS_DIV);
+        //Add here
     }
 
     public void securityIntrusion() {
         LOG(true, "---------- SQL Injection from Hacker. Likelihood=%s ----------", MEDIUM_LEVEL);
-        redirect(Constants.SEARCH_URL);
-        webAction(Constants.QUERY_INPUT, "apache*select");
-        webAction(Constants.SEARCH_BUTTON);
+        //Add here
         webElementVisible(Constants.NO_RECORDS_FOUND_TEXT);
     }
 

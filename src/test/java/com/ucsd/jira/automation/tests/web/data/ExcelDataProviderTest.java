@@ -29,7 +29,7 @@ public class ExcelDataProviderTest extends JiraTestCase {
         GIVEN("I have done something");
 
         WHEN("I do something");
-        webElementVisible(Constants.LOGO_IMAGE);
+        webElementVisible(Constants.LOGO_HEADING);
 
         THEN("Something happens as expected");
         LOG(true, "First Name = %s", firstName);
