@@ -20,7 +20,7 @@ import static org.junit.Assert.assertEquals;
 
 public class AutomationStandardsTest {
 
-    private static final String WEB_TEST_DIRECTORY_LOCATION = "com/mycompany/myproject/automation/tests/web";
+    private static final String WEB_TEST_DIRECTORY_LOCATION = "com/ucsd/jira/automation/tests/web";
     private Collection<File> allFiles = new LinkedList<>();
     private Collection<File> allTestFiles = new LinkedList<>();
 
