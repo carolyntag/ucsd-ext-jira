@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 import static com.pwc.assertion.AssertService.assertFail;
 import static com.pwc.logging.service.LoggerService.LOG;
 
-public abstract class AIUserTestCase extends MyApplicationTestCase {
+public abstract class AIUserTestCase extends JiraTestCase {
 
     private static final long MAXIMUM_USER_EXPERIENCE = 120000;
     private static final String HIGH_LEVEL = "HIGH";

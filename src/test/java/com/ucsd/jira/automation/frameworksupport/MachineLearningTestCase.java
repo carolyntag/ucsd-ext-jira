@@ -15,7 +15,7 @@ import java.util.logging.Level;
 
 import static com.pwc.logging.service.LoggerService.LOG;
 
-public abstract class MachineLearningTestCase extends MyApplicationTestCase {
+public abstract class MachineLearningTestCase extends JiraTestCase {
 
     /**
      * Redirect, wait for page to load, and collect all visible @href WebElements

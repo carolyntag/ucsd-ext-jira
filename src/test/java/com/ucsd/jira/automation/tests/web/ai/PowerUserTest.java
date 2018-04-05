@@ -8,11 +8,7 @@ import org.testng.annotations.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.pwc.logging.service.LoggerService.FEATURE;
-import static com.pwc.logging.service.LoggerService.GIVEN;
-import static com.pwc.logging.service.LoggerService.SCENARIO;
-import static com.pwc.logging.service.LoggerService.THEN;
-import static com.pwc.logging.service.LoggerService.WHEN;
+import static com.pwc.logging.service.LoggerService.*;
 
 public class PowerUserTest extends AIUserTestCase {
 
@@ -42,9 +38,9 @@ public class PowerUserTest extends AIUserTestCase {
      * 2. Based on that decision do something different (potentially similar but different activity)
      * 3. Do something else
      * 4. Do something else
-     *
+     * <p>
      * Continually perform random number of times ( less than 30 seconds )
-     *
+     * <p>
      * IMPORTANT: The more a decision is made the lower it's importance becomes.  As importance is reduced
      * than it should be avoided more often than more important decisions.
      */

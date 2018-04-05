@@ -1,11 +1,12 @@
 package com.ucsd.jira.automation.frameworksupport;
 
-import com.ucsd.jira.automation.data.Constants;
-import com.ucsd.jira.automation.data.Data;
 import com.pwc.core.framework.FrameworkConstants;
+import com.pwc.core.framework.JavascriptConstants;
 import com.pwc.core.framework.WebTestCase;
 import com.pwc.core.framework.command.WebServiceCommand;
 import com.pwc.core.framework.data.Credentials;
+import com.ucsd.jira.automation.data.Constants;
+import com.ucsd.jira.automation.data.Data;
 import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -15,16 +16,12 @@ import org.testng.annotations.Test;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static com.pwc.assertion.AssertService.assertFail;
 import static com.pwc.logging.service.LoggerService.LOG;
 
-public abstract class MyApplicationTestCase extends WebTestCase {
+public abstract class JiraTestCase extends WebTestCase {
 
     private Credentials credentials;
     private boolean headlessMode = false;
@@ -36,12 +33,14 @@ public abstract class MyApplicationTestCase extends WebTestCase {
             setCredentials(Data.DEFAULT_USER_CREDENTIALS);
         }
 
-        if (!isHeadlessMode() &&
-                (getCredentials().getUsername() != null && getCredentials().getPassword() != null)) {
+        if (!isHeadlessMode()) {
             webAction(getCredentials());
+            executeJavascript(combine(JavascriptConstants.ENTER_VALUE_ELEMENT_BY_XPATH, Constants.USERNAME_INPUT, getCredentials().getUsername()));
+            webAction(Constants.CONTINUE_SPAN);
+            executeJavascript(combine(JavascriptConstants.ENTER_VALUE_ELEMENT_BY_XPATH, Constants.PASSWORD_INPUT, getCredentials().getPassword()));
+            webAction(Constants.LOGIN_SPAN);
+            webElementVisible(Constants.LOGO_HEADING);
         }
-
-        webAction(Constants.LOGO_IMAGE);
 
     }
 
@@ -169,8 +168,8 @@ public abstract class MyApplicationTestCase extends WebTestCase {
         return credentials;
     }
 
-    protected void setCredentials(Credentials encryptedCredentials) {
-        this.credentials = new Credentials(decrypt(encryptedCredentials.getUsername()), decrypt(encryptedCredentials.getPassword()));
+    protected void setCredentials(Credentials credentials) {
+        this.credentials = new Credentials(credentials.getUsername(), credentials.getPassword());
     }
 
     private String decrypt(final String source) {

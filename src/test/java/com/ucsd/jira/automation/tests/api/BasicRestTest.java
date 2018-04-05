@@ -1,28 +1,22 @@
 package com.ucsd.jira.automation.tests.api;
 
 import com.jayway.restassured.path.json.JsonPath;
-import com.ucsd.jira.automation.data.Constants;
-import com.ucsd.jira.automation.frameworksupport.Groups;
-import com.ucsd.jira.automation.frameworksupport.MyApplicationTestCase;
-import com.ucsd.jira.automation.frameworksupport.command.webservice.WebServiceCommand;
 import com.pwc.core.framework.FrameworkConstants;
 import com.pwc.core.framework.annotations.MaxRetryCount;
 import com.pwc.core.framework.listeners.Retry;
+import com.ucsd.jira.automation.data.Constants;
+import com.ucsd.jira.automation.frameworksupport.Groups;
+import com.ucsd.jira.automation.frameworksupport.JiraTestCase;
+import com.ucsd.jira.automation.frameworksupport.command.webservice.WebServiceCommand;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
 
-import static com.pwc.assertion.AssertService.assertEquals;
-import static com.pwc.assertion.AssertService.assertGreaterThan;
-import static com.pwc.assertion.AssertService.assertLessThanOrEqual;
-import static com.pwc.logging.service.LoggerService.FEATURE;
-import static com.pwc.logging.service.LoggerService.GIVEN;
-import static com.pwc.logging.service.LoggerService.SCENARIO;
-import static com.pwc.logging.service.LoggerService.THEN;
-import static com.pwc.logging.service.LoggerService.WHEN;
+import static com.pwc.assertion.AssertService.*;
+import static com.pwc.logging.service.LoggerService.*;
 
-public class BasicRestTest extends MyApplicationTestCase {
+public class BasicRestTest extends JiraTestCase {
 
     @BeforeTest(alwaysRun = true)
     public void beforeTest() {

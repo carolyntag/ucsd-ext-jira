@@ -1,21 +1,16 @@
 package com.ucsd.jira.automation.tests.web.data;
 
+import com.pwc.core.framework.annotations.MaxRetryCount;
+import com.pwc.core.framework.listeners.Retry;
 import com.ucsd.jira.automation.data.Constants;
 import com.ucsd.jira.automation.data.provider.ExcelDataProvider;
 import com.ucsd.jira.automation.frameworksupport.Groups;
-import com.ucsd.jira.automation.frameworksupport.MyApplicationTestCase;
-import com.pwc.core.framework.annotations.MaxRetryCount;
-import com.pwc.core.framework.listeners.Retry;
+import com.ucsd.jira.automation.frameworksupport.JiraTestCase;
 import org.testng.annotations.Test;
 
-import static com.pwc.logging.service.LoggerService.FEATURE;
-import static com.pwc.logging.service.LoggerService.GIVEN;
-import static com.pwc.logging.service.LoggerService.LOG;
-import static com.pwc.logging.service.LoggerService.SCENARIO;
-import static com.pwc.logging.service.LoggerService.THEN;
-import static com.pwc.logging.service.LoggerService.WHEN;
+import static com.pwc.logging.service.LoggerService.*;
 
-public class ExcelDataProviderTest extends MyApplicationTestCase {
+public class ExcelDataProviderTest extends JiraTestCase {
 
     @Override
     public void beforeMethod() {

@@ -1,22 +1,18 @@
 package com.ucsd.jira.automation.tests.web.deep;
 
-import com.ucsd.jira.automation.data.Constants;
-import com.ucsd.jira.automation.frameworksupport.Groups;
-import com.ucsd.jira.automation.frameworksupport.MyApplicationTestCase;
 import com.pwc.core.framework.annotations.Issue;
 import com.pwc.core.framework.annotations.MaxRetryCount;
 import com.pwc.core.framework.listeners.Retry;
+import com.ucsd.jira.automation.data.Constants;
+import com.ucsd.jira.automation.frameworksupport.Groups;
+import com.ucsd.jira.automation.frameworksupport.JiraTestCase;
 import org.testng.annotations.Test;
 
 import java.util.logging.Level;
 
-import static com.pwc.logging.service.LoggerService.FEATURE;
-import static com.pwc.logging.service.LoggerService.GIVEN;
-import static com.pwc.logging.service.LoggerService.SCENARIO;
-import static com.pwc.logging.service.LoggerService.THEN;
-import static com.pwc.logging.service.LoggerService.WHEN;
+import static com.pwc.logging.service.LoggerService.*;
 
-public class BrowserDiagnosticsTest extends MyApplicationTestCase {
+public class BrowserDiagnosticsTest extends JiraTestCase {
 
     public static final String SEARCH_TEXT = "pacificwebconsulting";
 
