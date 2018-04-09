@@ -11,6 +11,8 @@ public final class Constants {
 
     // HEADING Elements
     public static final String LOGO_HEADING = "//h1[@id='logo']";
+    public static final String TEST_HEADING = "//h1[contains(text(),'test')]";
+
 
     // INPUT Elements
     public static final String USERNAME_INPUT = "//input[@id='username']";

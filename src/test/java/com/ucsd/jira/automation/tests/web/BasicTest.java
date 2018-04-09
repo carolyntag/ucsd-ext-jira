@@ -29,7 +29,7 @@ public class BasicTest extends JiraTestCase {
         SCENARIO("User logs in and validates basic functionality");
 
         GIVEN("I am a valid user");
-        webElementVisible(Constants.LOGO_HEADING);
+        webElementVisible(Constants.TEST_HEADING);
 
         WHEN("I do something");
 

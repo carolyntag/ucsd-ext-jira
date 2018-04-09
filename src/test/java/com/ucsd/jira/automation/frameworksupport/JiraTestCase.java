@@ -39,7 +39,7 @@ public abstract class JiraTestCase extends WebTestCase {
             webAction(Constants.CONTINUE_SPAN);
             executeJavascript(combine(JavascriptConstants.ENTER_VALUE_ELEMENT_BY_XPATH, Constants.PASSWORD_INPUT, getCredentials().getPassword()));
             webAction(Constants.LOGIN_SPAN);
-            webElementVisible(Constants.LOGO_HEADING);
+            webElementVisible(Constants.TEST_HEADING);
         }
 
     }
