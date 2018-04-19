@@ -31,7 +31,7 @@ public class BasicTest extends JiraTestCase {
         GIVEN("I am a valid user");
         webElementVisible(Constants.TEST_HEADING);
         webElementExists(Constants.PROJECT_FILTER_INPUT);
-        webAction(Constants.PROJECT_FILTER_INPUT,Constants.TEST);
+  //      webAction(Constants.PROJECT_FILTER_INPUT,Constants.TEST);
 
         WHEN("I do something");
         webElementExists(Constants.CREATE_SPAN);
@@ -39,10 +39,10 @@ public class BasicTest extends JiraTestCase {
 
         THEN("Something happens as expected");
         webElementExists(Constants.SUMMARY_TEXTAREA);
-        webAction(Constants.SUMMARY_TEXTAREA, Constants.SUMMARY_TEXTAREA);
+    //    webAction(Constants.SUMMARY_TEXTAREA, Constants.SUMMARY_TEXTAREA);
 
         webElementExists(Constants.SUMMARY_INPUT);
-        webAction(Constants.SUMMARY_INPUT);
+    //    webAction(Constants.SUMMARY_INPUT);
 
 
     }

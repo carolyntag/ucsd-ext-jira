@@ -20,7 +20,7 @@ public final class Constants {
     public static final String SUMMARY_INPUT = "//div[2]//div[1]//div//form//div[1]//div[2]//div[1]//label//span";
     public static final String TEST = "Project Steve";
     public static final String SEARCH_INPUT = "//input[@class='bjMcDu']";
-    public static final String SUMMARY_TEXTAREA = "//textarea[@id='description' and @data-project-key='TEST']";
+    public static final String SUMMARY_TEXTAREA = "//textarea[@id='description']";
     public static final String PROJECT_FILTER_INPUT ="//input[@id='10566-project-filter-picker']";
 
 
