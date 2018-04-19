@@ -44,6 +44,13 @@ public class BasicTest extends JiraTestCase {
         webElementExists(Constants.SUMMARY_INPUT);
     //    webAction(Constants.SUMMARY_INPUT);
 
+        webAction(Constants.CANCEL_BUTTON);
+
+        webElementExists(Constants.SEARCH_INPUT);
+            webAction(Constants.SEARCH_INPUT);
+
+            webElementExists(Constants.SEARCH_PICKER_INPUT);
+         //   webAction(Constants.SEARCH_PICKER_INPUT, Constants.TEST);
 
     }
 
