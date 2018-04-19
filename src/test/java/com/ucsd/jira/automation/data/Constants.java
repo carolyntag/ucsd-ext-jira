@@ -17,9 +17,14 @@ public final class Constants {
     // INPUT Elements
     public static final String USERNAME_INPUT = "//input[@id='username']";
     public static final String PASSWORD_INPUT = "//input[@id='password']";
-    public static final String SUMMARY_INPUT = "//input[@name='summary']";
-    public static final String TEST = "This is Steve's Project";
+    public static final String SUMMARY_INPUT = "//div[2]//div[1]//div//form//div[1]//div[2]//div[1]//label//span";
+    public static final String TEST = "Project Steve";
     public static final String SEARCH_INPUT = "//input[@class='bjMcDu']";
+    public static final String SUMMARY_TEXTAREA = "//textarea[@id='description' and @data-project-key='TEST']";
+    public static final String PROJECT_FILTER_INPUT ="//input[@id='10566-project-filter-picker']";
+
+
+
 
     // SPAN Elements
     public static final String CONTINUE_SPAN = "Continue";
@@ -29,5 +34,9 @@ public final class Constants {
 
     // STATIC Text
     public static final String NO_RECORDS_FOUND_TEXT = "No records found, try new search criteria.";
+
+    //DIALOG Elements
+    public static final String CREATE_ISSUE_DIALOG = "//div[@id='create-issue-dialog";
+
 
 }
