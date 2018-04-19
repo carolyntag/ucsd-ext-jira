@@ -17,10 +17,15 @@ public final class Constants {
     // INPUT Elements
     public static final String USERNAME_INPUT = "//input[@id='username']";
     public static final String PASSWORD_INPUT = "//input[@id='password']";
+    public static final String SUMMARY_INPUT = "//input[@name='summary']";
+    public static final String TEST = "This is Steve's Project";
+    public static final String SEARCH_INPUT = "//input[@class='bjMcDu']";
 
     // SPAN Elements
     public static final String CONTINUE_SPAN = "Continue";
     public static final String LOGIN_SPAN = "Log in";
+    public static final String CREATE_SPAN = "//span[@aria-label='Create']";
+    public static final String SEARCH_SPAN = "//span[@aria-label='Search (/)']";
 
     // STATIC Text
     public static final String NO_RECORDS_FOUND_TEXT = "No records found, try new search criteria.";
