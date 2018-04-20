@@ -63,7 +63,7 @@
     <poi-ooxml.version>3.15</poi-ooxml.version>
     <restassured.version>2.9.0</restassured.version>
     <runner-microservice.version>1.0.2</runner-microservice.version>
-    <runtime-microservice.version>1.0.13</runtime-microservice.version>
+    <runtime-microservice.version>1.0.15</runtime-microservice.version>
     <sauce-connect-plugin.version>2.1.8</sauce-connect-plugin.version>
     <selenium.version>3.5.3</selenium.version>
     <skip.profile>true</skip.profile>

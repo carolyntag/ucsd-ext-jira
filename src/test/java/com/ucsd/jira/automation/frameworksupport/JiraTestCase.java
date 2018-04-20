@@ -7,6 +7,8 @@ import com.pwc.core.framework.command.WebServiceCommand;
 import com.pwc.core.framework.data.Credentials;
 import com.ucsd.jira.automation.data.Constants;
 import com.ucsd.jira.automation.data.Data;
+import com.ucsd.jira.automation.data.enums.JiraMenu;
+import com.ucsd.jira.automation.data.enums.LeftMenu;
 import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -16,7 +18,11 @@ import org.testng.annotations.Test;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 import static com.pwc.assertion.AssertService.assertFail;
 import static com.pwc.logging.service.LoggerService.LOG;
@@ -58,6 +64,21 @@ public abstract class JiraTestCase extends WebTestCase {
 
     @AfterClass(alwaysRun = true)
     public void logout() {
+    }
+
+    /**
+     * Select any Jira menu item
+     *
+     * @param menuIdentifier unique Jira menu identifier for an element
+     * @return time in milliseconds for mouse-based action
+     */
+    protected long webAction(final JiraMenu menuIdentifier) {
+
+        long duration = 0;
+        if (menuIdentifier instanceof LeftMenu) {
+            duration = super.webAction(combine(Constants.VARIABLE_BY_LABEL_SPAN, menuIdentifier.getPrimaryMenu()));
+        }
+        return duration;
     }
 
     /**
