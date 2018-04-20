@@ -14,7 +14,6 @@ public final class Constants {
     public static final String USERNAME_INPUT = "//input[@id='username']";
     public static final String PASSWORD_INPUT = "//input[@id='password']";
     public static final String BASIC_SEARCH_INPUT = "//input[@type='text' and @placeholder='Search']";
-    public static final String ISSUES_SEARCH_INPUT = "//input[@type='text' and @placeholder='Search issues']";
 
     // BUTTON Elements
     public static final String ADVANCED_SEARCH_TEXTAREA = "advanced-search";
