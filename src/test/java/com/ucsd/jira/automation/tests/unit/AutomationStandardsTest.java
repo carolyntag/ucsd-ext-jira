@@ -21,12 +21,15 @@ import static org.junit.Assert.assertEquals;
 public class AutomationStandardsTest {
 
     private static final String WEB_TEST_DIRECTORY_LOCATION = "com/ucsd/jira/automation/tests/web";
+    private static final String API_TEST_DIRECTORY_LOCATION = "com/ucsd/jira/automation/tests/api";
     private Collection<File> allFiles = new LinkedList<>();
     private Collection<File> allTestFiles = new LinkedList<>();
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         File directory = PropertiesUtils.getFileFromResources(WEB_TEST_DIRECTORY_LOCATION);
+        allFiles.addAll(FileUtils.listFiles(directory, new String[]{"class"}, true));
+        directory = PropertiesUtils.getFileFromResources(API_TEST_DIRECTORY_LOCATION);
         allFiles.addAll(FileUtils.listFiles(directory, new String[]{"class"}, true));
 
         for (File allFile : allFiles) {

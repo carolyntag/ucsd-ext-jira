@@ -177,11 +177,11 @@ public abstract class JiraTestCase extends WebTestCase {
         }
     }
 
-    public boolean isHeadlessMode() {
+    private boolean isHeadlessMode() {
         return headlessMode;
     }
 
-    public void setHeadlessMode(boolean headlessMode) {
+    protected void setHeadlessMode(boolean headlessMode) {
         this.headlessMode = headlessMode;
     }
 
@@ -189,8 +189,8 @@ public abstract class JiraTestCase extends WebTestCase {
         return credentials;
     }
 
-    protected void setCredentials(Credentials credentials) {
-        this.credentials = new Credentials(credentials.getUsername(), credentials.getPassword());
+    private void setCredentials(Credentials encryptedCredentials) {
+        this.credentials = new Credentials(decrypt(encryptedCredentials.getUsername()), decrypt(encryptedCredentials.getPassword()));
     }
 
     private String decrypt(final String source) {

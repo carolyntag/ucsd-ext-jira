@@ -1,4 +1,4 @@
-package com.ucsd.jira.automation.tests.web.ai;
+package com.ucsd.jira.automation.tests.web.advanced.ai;
 
 import com.ucsd.jira.automation.frameworksupport.AIUserTestCase;
 import com.ucsd.jira.automation.frameworksupport.Groups;

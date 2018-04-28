@@ -6,17 +6,24 @@ import com.pwc.core.framework.annotations.MaxRetryCount;
 import com.pwc.core.framework.listeners.Retry;
 import com.ucsd.jira.automation.data.Constants;
 import com.ucsd.jira.automation.frameworksupport.Groups;
-import com.ucsd.jira.automation.frameworksupport.JiraTestCase;
+import com.ucsd.jira.automation.frameworksupport.WebServiceTestCase;
 import com.ucsd.jira.automation.frameworksupport.command.webservice.WebServiceCommand;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
+import java.util.List;
 
-import static com.pwc.assertion.AssertService.*;
-import static com.pwc.logging.service.LoggerService.*;
+import static com.pwc.assertion.AssertService.assertEquals;
+import static com.pwc.assertion.AssertService.assertGreaterThan;
+import static com.pwc.assertion.AssertService.assertLessThanOrEqual;
+import static com.pwc.logging.service.LoggerService.FEATURE;
+import static com.pwc.logging.service.LoggerService.GIVEN;
+import static com.pwc.logging.service.LoggerService.SCENARIO;
+import static com.pwc.logging.service.LoggerService.THEN;
+import static com.pwc.logging.service.LoggerService.WHEN;
 
-public class BasicRestTest extends JiraTestCase {
+public class ProductSearchTest extends WebServiceTestCase {
 
     @BeforeTest(alwaysRun = true)
     public void beforeTest() {
@@ -34,20 +41,20 @@ public class BasicRestTest extends JiraTestCase {
 
     @MaxRetryCount(1)
     @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
-    public void testBasicRest() {
+    public void testProductSearch() {
 
-        FEATURE("Webservice-Based Feature Under Test");
-        SCENARIO("Scenario Being Tested Here");
+        FEATURE("Product Web Services");
+        SCENARIO("Query the product search service for all available search types");
 
-        GIVEN("I can query a public REST service");
-        JsonPath response = (JsonPath) webServiceAction(WebServiceCommand.GET_LIST_ALL_BREEDS);
+        GIVEN("I can query the JIRA API");
+        JsonPath response = (JsonPath) webServiceAction(WebServiceCommand.GET_PRODUCT_SEARCH);
 
-        WHEN("I verify the REST results");
+        WHEN("I read the web service response");
         JsonPath entity = new JsonPath(response.get(FrameworkConstants.HTTP_ENTITY_KEY).toString());
-        HashMap dogBreeds = entity.get("message");
+        List<HashMap> searchTypeList = entity.get();
 
-        THEN("The REST service responds correctly");
-        assertGreaterThan("All Dog Breeds are returned", dogBreeds.size(), 0);
+        THEN("The product search details are valid as expected");
+        assertGreaterThan("Verify Search Type List size", searchTypeList.size(), 0);
         assertEquals("Verify Http Status Value", response.getInt(FrameworkConstants.HTTP_STATUS_VALUE_KEY), org.apache.http.HttpStatus.SC_OK);
         assertLessThanOrEqual("Verify WS Performance", response.get(FrameworkConstants.HTTP_RESPONSE_TIME_KEY), Constants.MAX_WEB_SERVICE_RESPONSE_TIME);
 
