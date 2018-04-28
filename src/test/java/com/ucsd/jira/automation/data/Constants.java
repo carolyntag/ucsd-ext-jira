@@ -10,6 +10,9 @@ public final class Constants {
     public static final String LOGO_HEADING = "//h1[@id='logo']";
     public static final String TEST_HEADING = "//h1[contains(text(),'test')]";
 
+    // ANCHOR Elements
+    public static final String FIRST_PROJECTS_ANCHOR = "//img[contains(@src, 'projectavatar')]/following-sibling::a";
+
     // INPUT Elements
     public static final String USERNAME_INPUT = "//input[@id='username']";
     public static final String PASSWORD_INPUT = "//input[@id='password']";
