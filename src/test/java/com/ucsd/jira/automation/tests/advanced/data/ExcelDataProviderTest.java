@@ -1,4 +1,4 @@
-package com.ucsd.jira.automation.tests.web.advanced.data;
+package com.ucsd.jira.automation.tests.advanced.data;
 
 import com.pwc.core.framework.annotations.MaxRetryCount;
 import com.pwc.core.framework.listeners.Retry;
