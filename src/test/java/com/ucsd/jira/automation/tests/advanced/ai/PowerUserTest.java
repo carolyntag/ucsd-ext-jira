@@ -8,7 +8,11 @@ import org.testng.annotations.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.pwc.logging.service.LoggerService.*;
+import static com.pwc.logging.service.LoggerService.FEATURE;
+import static com.pwc.logging.service.LoggerService.GIVEN;
+import static com.pwc.logging.service.LoggerService.SCENARIO;
+import static com.pwc.logging.service.LoggerService.THEN;
+import static com.pwc.logging.service.LoggerService.WHEN;
 
 public class PowerUserTest extends AIUserTestCase {
 
