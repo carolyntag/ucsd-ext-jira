@@ -15,9 +15,7 @@ import static com.pwc.logging.service.LoggerService.SCENARIO;
 import static com.pwc.logging.service.LoggerService.THEN;
 import static com.pwc.logging.service.LoggerService.WHEN;
 
-public class IssueSearchByIssueNumberTest extends WebServiceTestCase {
-
-    private static final String ISSUE_NUMBER = "OTP-5";
+public class FindRecentJiraIssueByNumberTest extends WebServiceTestCase {
 
     @BeforeTest(alwaysRun = true)
     public void beforeTest() {
@@ -34,18 +32,19 @@ public class IssueSearchByIssueNumberTest extends WebServiceTestCase {
 
     @Issue("STORY-1234")
     @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
-    public void testIssueSearchByIssueNumber() {
+    public void testFindRecentJiraIssueByNumber() {
 
         FEATURE("Issue Web Services");
-        SCENARIO("Search for an issue by issue number");
+        SCENARIO("Search for a recent issue by it's issue number");
 
         GIVEN("I have an issue number to search for");
+        JiraIssue randomIssue = getIssue();
 
         WHEN("I search for a Jira issue number");
-        JiraIssue jiraIssue = findIssue(ISSUE_NUMBER);
+        JiraIssue foundJiraIssue = findIssue(randomIssue.getMetadata());
 
         THEN("The correct Jira issue was found or created");
-        assertEquals("Verify Issue Number", jiraIssue.getMetadata(), ISSUE_NUMBER);
+        assertEquals("Verify Issue Number", foundJiraIssue.getMetadata(), randomIssue.getMetadata());
 
     }
 

@@ -3,6 +3,7 @@ package com.ucsd.jira.automation.frameworksupport;
 import com.jayway.restassured.path.json.JsonPath;
 import com.pwc.core.framework.FrameworkConstants;
 import com.pwc.core.framework.command.WebServiceCommand;
+import com.ucsd.jira.automation.data.Field;
 import com.ucsd.jira.automation.frameworksupport.command.webservice.JiraCommand;
 import com.ucsd.jira.automation.frameworksupport.type.JiraIssue;
 import org.apache.commons.lang3.StringUtils;
@@ -53,28 +54,37 @@ public abstract class WebServiceTestCase extends JiraTestCase {
      * @param issueNumber issue number to find
      * @return JiraIssue object
      */
-    protected JiraIssue search(final String issueNumber) {
+    protected JiraIssue findIssue(final String issueNumber) {
 
         JiraIssue issue = new JiraIssue();
+        List<HashMap> recentIssueList = new ArrayList<>();
+
         Map parameters = new HashMap();
         parameters.put("q", issueNumber);
 
         JsonPath response = (JsonPath) webServiceAction(JiraCommand.GET_SEARCH_BY_QUERY, parameters);
         JsonPath entity = new JsonPath(response.get(FrameworkConstants.HTTP_ENTITY_KEY).toString());
         List<ArrayList> itemsList = entity.get("items");
-        itemsList.forEach(item -> {
-            if (item.size() > 0) {
-                HashMap itemMap = (HashMap) item.get(0);
-                if (StringUtils.containsIgnoreCase(itemMap.get("avatarUrl").toString(), "story.svg")) {
-                    issue.setMetadata(itemMap.get("metadata").toString());
-                    issue.setAvatarUrl(itemMap.get("avatarUrl").toString());
-                    issue.setSubTitle(itemMap.get("subtitle").toString());
-                    issue.setTitle(itemMap.get("title").toString());
-                    issue.setFavoirite(Boolean.valueOf(itemMap.get("favourite").toString()));
-                    issue.setUrl(itemMap.get("url").toString());
-                }
+
+        itemsList.forEach(eachItem -> {
+            if (!eachItem.isEmpty()) {
+                recentIssueList.addAll(eachItem);
             }
         });
+
+        for (HashMap recentIssue : recentIssueList) {
+            if (StringUtils.equalsIgnoreCase(recentIssue.get("metadata").toString(), issueNumber) &&
+                    StringUtils.containsIgnoreCase(recentIssue.get("avatarUrl").toString(), "story.svg")) {
+                issue.setMetadata(recentIssue.get("metadata").toString());
+                issue.setAvatarUrl(recentIssue.get("avatarUrl").toString());
+                issue.setSubTitle(recentIssue.get("subtitle").toString());
+                issue.setTitle(recentIssue.get(Field.TITLE).toString());
+                issue.setFavoirite(Boolean.valueOf(recentIssue.get("favourite").toString()));
+                issue.setUrl(recentIssue.get("url").toString());
+                break;
+            }
+        }
+
         return issue;
     }
 
