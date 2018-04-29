@@ -177,6 +177,17 @@ public abstract class JiraTestCase extends WebTestCase {
         }
     }
 
+    /**
+     * Generate a random index number based on a given list.  Used for randomizing data used that is housed in Lists
+     *
+     * @param listToRandomize given list of  values
+     * @return random index within list
+     */
+    protected int getRandomIndexFromList(final List listToRandomize) {
+        Random random = new Random();
+        return (int) (random.nextDouble() * listToRandomize.size() - 1);
+    }
+
     private boolean isHeadlessMode() {
         return headlessMode;
     }

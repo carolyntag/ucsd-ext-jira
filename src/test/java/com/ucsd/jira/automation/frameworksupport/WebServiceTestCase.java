@@ -1,9 +1,16 @@
 package com.ucsd.jira.automation.frameworksupport;
 
+import com.jayway.restassured.path.json.JsonPath;
+import com.pwc.core.framework.FrameworkConstants;
 import com.pwc.core.framework.command.WebServiceCommand;
+import com.ucsd.jira.automation.frameworksupport.command.webservice.JiraCommand;
+import com.ucsd.jira.automation.frameworksupport.type.JiraIssue;
+import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public abstract class WebServiceTestCase extends JiraTestCase {
 
@@ -38,6 +45,64 @@ public abstract class WebServiceTestCase extends JiraTestCase {
      */
     protected Object webServiceAction(final WebServiceCommand command, final HashMap<String, Object> parameterMap) {
         return super.webServiceAction(getCredentials(), command, null, parameterMap);
+    }
+
+    /**
+     * Find a Jira issue by it's issue number from the web service
+     *
+     * @param issueNumber issue number to find
+     * @return JiraIssue object
+     */
+    protected JiraIssue search(final String issueNumber) {
+
+        JiraIssue issue = new JiraIssue();
+        Map parameters = new HashMap();
+        parameters.put("q", issueNumber);
+
+        JsonPath response = (JsonPath) webServiceAction(JiraCommand.GET_SEARCH_BY_QUERY, parameters);
+        JsonPath entity = new JsonPath(response.get(FrameworkConstants.HTTP_ENTITY_KEY).toString());
+        List<ArrayList> itemsList = entity.get("items");
+        itemsList.forEach(item -> {
+            if (item.size() > 0) {
+                HashMap itemMap = (HashMap) item.get(0);
+                if (StringUtils.containsIgnoreCase(itemMap.get("avatarUrl").toString(), "story.svg")) {
+                    issue.setMetadata(itemMap.get("metadata").toString());
+                    issue.setAvatarUrl(itemMap.get("avatarUrl").toString());
+                    issue.setSubTitle(itemMap.get("subtitle").toString());
+                    issue.setTitle(itemMap.get("title").toString());
+                    issue.setFavoirite(Boolean.valueOf(itemMap.get("favourite").toString()));
+                    issue.setUrl(itemMap.get("url").toString());
+                }
+            }
+        });
+        return issue;
+    }
+
+    /**
+     * Get a random recent issue
+     *
+     * @return random Jira issue found
+     */
+    protected JiraIssue getIssue() {
+
+        JiraIssue randomIssue = new JiraIssue();
+        JsonPath response = (JsonPath) webServiceAction(JiraCommand.GET_RECENT_SEARCH);
+        JsonPath entity = new JsonPath(response.get(FrameworkConstants.HTTP_ENTITY_KEY).toString());
+        List<HashMap> searchTypeList = entity.get();
+        for (HashMap searchType : searchTypeList) {
+            if (StringUtils.equalsIgnoreCase(searchType.get("name").toString(), "recent issues")) {
+                List recentItems = (List) searchType.get("items");
+                int index = getRandomIndexFromList(recentItems);
+                HashMap issue = (HashMap) recentItems.get(index);
+                randomIssue.setUrl(issue.get("url").toString());
+                randomIssue.setFavoirite(Boolean.valueOf(issue.get("favourite").toString()));
+                randomIssue.setTitle(issue.get("title").toString());
+                randomIssue.setSubTitle(issue.get("subtitle").toString());
+                randomIssue.setMetadata(issue.get("metadata").toString());
+                randomIssue.setAvatarUrl(issue.get("avatarUrl").toString());
+            }
+        }
+        return randomIssue;
     }
 
 }
