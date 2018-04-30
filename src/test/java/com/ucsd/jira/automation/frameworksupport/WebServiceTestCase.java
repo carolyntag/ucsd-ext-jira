@@ -11,7 +11,6 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public abstract class WebServiceTestCase extends JiraTestCase {
 
@@ -51,29 +50,33 @@ public abstract class WebServiceTestCase extends JiraTestCase {
     /**
      * Find a Jira issue by it's issue number from the web service
      *
-     * @param issueNumber issue number to find
+     * @param expectedIssueNumber issue number to find
      * @return JiraIssue object
      */
-    protected JiraIssue findIssue(final String issueNumber) {
+    protected JiraIssue findIssue(final String expectedIssueNumber) {
 
         JiraIssue issue = new JiraIssue();
+        List<ArrayList> recentIssuesList = new ArrayList<>();
         List<HashMap> recentIssueList = new ArrayList<>();
 
-        Map parameters = new HashMap();
-        parameters.put("q", issueNumber);
-
-        JsonPath response = (JsonPath) webServiceAction(JiraCommand.GET_SEARCH_BY_QUERY, parameters);
+        JsonPath response = (JsonPath) webServiceAction(JiraCommand.GET_RECENT_SEARCH);
         JsonPath entity = new JsonPath(response.get(FrameworkConstants.HTTP_ENTITY_KEY).toString());
-        List<ArrayList> itemsList = entity.get("items");
+        List<HashMap> quickSearchIssueList = entity.get();
+        for (HashMap hashMap : quickSearchIssueList) {
+            if (StringUtils.equalsIgnoreCase(hashMap.get("name").toString(), "recent issues")) {
+                recentIssuesList = entity.get("items");
+                break;
+            }
+        }
 
-        itemsList.forEach(eachItem -> {
+        recentIssuesList.forEach(eachItem -> {
             if (!eachItem.isEmpty()) {
                 recentIssueList.addAll(eachItem);
             }
         });
 
         for (HashMap recentIssue : recentIssueList) {
-            if (StringUtils.equalsIgnoreCase(recentIssue.get("metadata").toString(), issueNumber) &&
+            if (StringUtils.equalsIgnoreCase(recentIssue.get("metadata").toString(), expectedIssueNumber) &&
                     StringUtils.containsIgnoreCase(recentIssue.get("avatarUrl").toString(), "story.svg")) {
                 issue.setMetadata(recentIssue.get("metadata").toString());
                 issue.setAvatarUrl(recentIssue.get("avatarUrl").toString());
