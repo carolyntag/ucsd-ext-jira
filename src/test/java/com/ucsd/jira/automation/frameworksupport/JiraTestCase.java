@@ -54,7 +54,7 @@ public abstract class JiraTestCase extends WebTestCase {
     public void preserveProduction(Method m) {
         if (StringUtils.containsIgnoreCase(System.getProperty(FrameworkConstants.AUTOMATION_TEST_ENVIRONMENT), "prod")) {
             Test currentTest = m.getAnnotation(Test.class);
-            if (!Arrays.asList(currentTest.groups()).contains(Groups.ACCEPTANCE_TEST) || Arrays.asList(currentTest.groups()).contains(Groups.IN_PROGRESS_TEST)) {
+            if (!Arrays.asList(currentTest.groups()).contains(Groups.ACCEPTANCE_TEST)) {
                 assertFail("PREVENTING EXECUTION OF REGRESSION TEST='%s' IN PRODUCTION", m.getName());
                 tearDownClass();
                 System.exit(1);

@@ -30,7 +30,7 @@ public class BrowserDiagnosticsTest extends JiraTestCase {
 
     @Issue("STORY-1234")
     @MaxRetryCount(1)
-    @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
+    @Test(enabled = false, retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
     public void testBrowserDiagnostics() {
 
         FEATURE("Web Diagnostics");

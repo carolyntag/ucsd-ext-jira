@@ -26,7 +26,7 @@ public class ExcelDataProviderTest extends JiraTestCase {
     }
 
     @MaxRetryCount(1)
-    @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST}, dataProvider = "exampleExcelData", dataProviderClass = ExcelDataProvider.class)
+    @Test(enabled = false, retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST}, dataProvider = "exampleExcelData", dataProviderClass = ExcelDataProvider.class)
     public void testExcelDataProvider(String firstName, String lastName, String nickName) {
 
         FEATURE("Feature Under Test");

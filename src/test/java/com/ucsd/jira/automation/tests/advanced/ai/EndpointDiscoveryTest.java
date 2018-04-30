@@ -33,7 +33,7 @@ public class EndpointDiscoveryTest extends MachineLearningTestCase {
         storeEndpointsToMemory(memorize, STORAGE_FILE, base);
     }
 
-    @Test(groups = {Groups.MACHINE_LEARNING_TEST})
+    @Test(enabled = false, groups = {Groups.MACHINE_LEARNING_TEST})
     public void testEndpointDiscovery() {
 
         FEATURE("Discovery Test");

@@ -49,7 +49,7 @@ public class PowerUserTest extends AIUserTestCase {
      * than it should be avoided more often than more important decisions.
      */
 
-    @Test(groups = {Groups.REAL_TEST, Groups.ACCEPTANCE_TEST})
+    @Test(enabled = false, groups = {Groups.REAL_TEST, Groups.ACCEPTANCE_TEST})
     public void testPowerUser() {
 
         FEATURE("Maven Central Power User");
