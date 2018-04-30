@@ -1,15 +1,15 @@
 package com.ucsd.jira.automation.data.provider;
 
+import com.ucsd.jira.automation.frameworksupport.WebServiceTestCase;
 import org.testng.annotations.DataProvider;
 
-public class IssueNumberProvider {
+public abstract class IssueNumberProvider extends WebServiceTestCase {
 
     @DataProvider(name = "knownIssueNumbers")
     public static Object[][] knownIssueNumbers() {
         return new Object[][]{
-                {"UCSD1-75"},
-                {"GRW-1"},
-                {"OTP-5"}};
+                {"UCSD1-1"},
+                {"TES-1"}};
     }
 
 }

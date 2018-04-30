@@ -53,7 +53,7 @@ public abstract class WebServiceTestCase extends JiraTestCase {
      * @param expectedIssueNumber issue number to find
      * @return JiraIssue object
      */
-    protected JiraIssue findIssue(final String expectedIssueNumber) {
+    protected JiraIssue findRecentIssue(final String expectedIssueNumber) {
 
         JiraIssue issue = new JiraIssue();
         List<ArrayList> recentIssuesList = new ArrayList<>();

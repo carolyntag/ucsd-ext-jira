@@ -40,7 +40,7 @@ public class IssuesExistTest extends WebServiceTestCase {
         GIVEN("I have a known issue number=%s to search for", issueNumber);
 
         WHEN("I search for a Jira issue number");
-        JiraIssue jiraIssue = findIssue(issueNumber);
+        JiraIssue jiraIssue = findRecentIssue(issueNumber);
 
         THEN("The correct Jira issue was found or created");
         assertEquals("Verify Issue Number", jiraIssue.getMetadata(), issueNumber);

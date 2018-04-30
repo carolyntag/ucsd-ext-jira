@@ -17,7 +17,7 @@ import static com.pwc.logging.service.LoggerService.WHEN;
 
 public class IssueSearchByIssueNumberTest extends WebServiceTestCase {
 
-    private static final String ISSUE_NUMBER = "OTP-5";
+    private static final String ISSUE_NUMBER = "TES-1";
 
     @BeforeTest(alwaysRun = true)
     public void beforeTest() {
@@ -42,7 +42,7 @@ public class IssueSearchByIssueNumberTest extends WebServiceTestCase {
         GIVEN("I have an issue number to search for");
 
         WHEN("I search for a Jira issue number");
-        JiraIssue jiraIssue = findIssue(ISSUE_NUMBER);
+        JiraIssue jiraIssue = findRecentIssue(ISSUE_NUMBER);
 
         THEN("The correct Jira issue was found or created");
         assertEquals("Verify Issue Number", jiraIssue.getMetadata(), ISSUE_NUMBER);

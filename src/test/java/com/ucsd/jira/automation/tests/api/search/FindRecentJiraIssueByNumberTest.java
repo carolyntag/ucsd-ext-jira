@@ -41,7 +41,7 @@ public class FindRecentJiraIssueByNumberTest extends WebServiceTestCase {
         JiraIssue randomIssue = getIssue();
 
         WHEN("I search for a Jira issue number");
-        JiraIssue foundJiraIssue = findIssue(randomIssue.getMetadata());
+        JiraIssue foundJiraIssue = findRecentIssue(randomIssue.getMetadata());
 
         THEN("The correct Jira issue was found or created");
         assertEquals("Verify Issue Number", foundJiraIssue.getMetadata(), randomIssue.getMetadata());
