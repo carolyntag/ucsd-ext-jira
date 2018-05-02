@@ -38,10 +38,9 @@ public class IssueSearchByIssueNumberTest extends WebServiceTestCase {
 
         FEATURE("Issue Web Services");
         SCENARIO("Search for an issue by issue number");
-
         GIVEN("I have an issue number to search for");
 
-        WHEN("I search for a Jira issue number");
+        WHEN("I search for a known Jira issue number");
         JiraIssue jiraIssue = findRecentIssue(ISSUE_NUMBER);
 
         THEN("The correct Jira issue was found or created");
