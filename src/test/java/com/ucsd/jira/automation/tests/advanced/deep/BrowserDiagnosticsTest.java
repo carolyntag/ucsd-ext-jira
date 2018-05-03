@@ -1,4 +1,4 @@
-package com.ucsd.jira.automation.tests.web.deep;
+package com.ucsd.jira.automation.tests.advanced.deep;
 
 import com.pwc.core.framework.annotations.Issue;
 import com.pwc.core.framework.annotations.MaxRetryCount;
@@ -10,7 +10,11 @@ import org.testng.annotations.Test;
 
 import java.util.logging.Level;
 
-import static com.pwc.logging.service.LoggerService.*;
+import static com.pwc.logging.service.LoggerService.FEATURE;
+import static com.pwc.logging.service.LoggerService.GIVEN;
+import static com.pwc.logging.service.LoggerService.SCENARIO;
+import static com.pwc.logging.service.LoggerService.THEN;
+import static com.pwc.logging.service.LoggerService.WHEN;
 
 public class BrowserDiagnosticsTest extends JiraTestCase {
 
@@ -26,7 +30,7 @@ public class BrowserDiagnosticsTest extends JiraTestCase {
 
     @Issue("STORY-1234")
     @MaxRetryCount(1)
-    @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
+    @Test(enabled = false, retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
     public void testBrowserDiagnostics() {
 
         FEATURE("Web Diagnostics");

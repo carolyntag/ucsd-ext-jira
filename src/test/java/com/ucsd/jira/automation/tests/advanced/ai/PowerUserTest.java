@@ -1,4 +1,4 @@
-package com.ucsd.jira.automation.tests.web.ai;
+package com.ucsd.jira.automation.tests.advanced.ai;
 
 import com.ucsd.jira.automation.frameworksupport.AIUserTestCase;
 import com.ucsd.jira.automation.frameworksupport.Groups;
@@ -8,7 +8,11 @@ import org.testng.annotations.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.pwc.logging.service.LoggerService.*;
+import static com.pwc.logging.service.LoggerService.FEATURE;
+import static com.pwc.logging.service.LoggerService.GIVEN;
+import static com.pwc.logging.service.LoggerService.SCENARIO;
+import static com.pwc.logging.service.LoggerService.THEN;
+import static com.pwc.logging.service.LoggerService.WHEN;
 
 public class PowerUserTest extends AIUserTestCase {
 
@@ -45,7 +49,7 @@ public class PowerUserTest extends AIUserTestCase {
      * than it should be avoided more often than more important decisions.
      */
 
-    @Test(groups = {Groups.REAL_TEST, Groups.ACCEPTANCE_TEST})
+    @Test(enabled = false, groups = {Groups.REAL_TEST, Groups.ACCEPTANCE_TEST})
     public void testPowerUser() {
 
         FEATURE("Maven Central Power User");

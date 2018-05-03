@@ -1,4 +1,4 @@
-package com.ucsd.jira.automation.tests.web.data;
+package com.ucsd.jira.automation.tests.advanced.data;
 
 import com.pwc.core.framework.annotations.MaxRetryCount;
 import com.pwc.core.framework.listeners.Retry;
@@ -8,7 +8,12 @@ import com.ucsd.jira.automation.frameworksupport.Groups;
 import com.ucsd.jira.automation.frameworksupport.JiraTestCase;
 import org.testng.annotations.Test;
 
-import static com.pwc.logging.service.LoggerService.*;
+import static com.pwc.logging.service.LoggerService.FEATURE;
+import static com.pwc.logging.service.LoggerService.GIVEN;
+import static com.pwc.logging.service.LoggerService.LOG;
+import static com.pwc.logging.service.LoggerService.SCENARIO;
+import static com.pwc.logging.service.LoggerService.THEN;
+import static com.pwc.logging.service.LoggerService.WHEN;
 
 public class ExcelDataProviderTest extends JiraTestCase {
 
@@ -21,7 +26,7 @@ public class ExcelDataProviderTest extends JiraTestCase {
     }
 
     @MaxRetryCount(1)
-    @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST}, dataProvider = "exampleExcelData", dataProviderClass = ExcelDataProvider.class)
+    @Test(enabled = false, retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST}, dataProvider = "exampleExcelData", dataProviderClass = ExcelDataProvider.class)
     public void testExcelDataProvider(String firstName, String lastName, String nickName) {
 
         FEATURE("Feature Under Test");

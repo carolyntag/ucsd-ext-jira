@@ -54,7 +54,7 @@ public abstract class JiraTestCase extends WebTestCase {
     public void preserveProduction(Method m) {
         if (StringUtils.containsIgnoreCase(System.getProperty(FrameworkConstants.AUTOMATION_TEST_ENVIRONMENT), "prod")) {
             Test currentTest = m.getAnnotation(Test.class);
-            if (!Arrays.asList(currentTest.groups()).contains(Groups.ACCEPTANCE_TEST) || Arrays.asList(currentTest.groups()).contains(Groups.IN_PROGRESS_TEST)) {
+            if (!Arrays.asList(currentTest.groups()).contains(Groups.ACCEPTANCE_TEST)) {
                 assertFail("PREVENTING EXECUTION OF REGRESSION TEST='%s' IN PRODUCTION", m.getName());
                 tearDownClass();
                 System.exit(1);
@@ -177,11 +177,22 @@ public abstract class JiraTestCase extends WebTestCase {
         }
     }
 
-    public boolean isHeadlessMode() {
+    /**
+     * Generate a random index number based on a given list.  Used for randomizing data used that is housed in Lists
+     *
+     * @param listToRandomize given list of  values
+     * @return random index within list
+     */
+    protected int getRandomIndexFromList(final List listToRandomize) {
+        Random random = new Random();
+        return (int) (random.nextDouble() * listToRandomize.size() - 1);
+    }
+
+    private boolean isHeadlessMode() {
         return headlessMode;
     }
 
-    public void setHeadlessMode(boolean headlessMode) {
+    protected void setHeadlessMode(boolean headlessMode) {
         this.headlessMode = headlessMode;
     }
 
@@ -189,8 +200,8 @@ public abstract class JiraTestCase extends WebTestCase {
         return credentials;
     }
 
-    protected void setCredentials(Credentials credentials) {
-        this.credentials = new Credentials(credentials.getUsername(), credentials.getPassword());
+    private void setCredentials(Credentials encryptedCredentials) {
+        this.credentials = new Credentials(decrypt(encryptedCredentials.getUsername()), decrypt(encryptedCredentials.getPassword()));
     }
 
     private String decrypt(final String source) {

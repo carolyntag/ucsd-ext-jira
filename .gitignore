@@ -1,0 +1,5 @@
+# IntelliJ Dir
+.idea/
+*.iml
+src/test/resources/password.properties
+target/

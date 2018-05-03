@@ -1,4 +1,4 @@
-package com.ucsd.jira.automation.tests.web.ai;
+package com.ucsd.jira.automation.tests.advanced.ai;
 
 import com.ucsd.jira.automation.data.Constants;
 import com.ucsd.jira.automation.frameworksupport.Groups;
@@ -9,7 +9,12 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.pwc.logging.service.LoggerService.*;
+import static com.pwc.logging.service.LoggerService.AND;
+import static com.pwc.logging.service.LoggerService.FEATURE;
+import static com.pwc.logging.service.LoggerService.GIVEN;
+import static com.pwc.logging.service.LoggerService.SCENARIO;
+import static com.pwc.logging.service.LoggerService.THEN;
+import static com.pwc.logging.service.LoggerService.WHEN;
 
 public class EndpointDiscoveryTest extends MachineLearningTestCase {
 
@@ -28,7 +33,7 @@ public class EndpointDiscoveryTest extends MachineLearningTestCase {
         storeEndpointsToMemory(memorize, STORAGE_FILE, base);
     }
 
-    @Test(groups = {Groups.MACHINE_LEARNING_TEST})
+    @Test(enabled = false, groups = {Groups.MACHINE_LEARNING_TEST})
     public void testEndpointDiscovery() {
 
         FEATURE("Discovery Test");
