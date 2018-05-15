@@ -10,6 +10,7 @@ Call 911
 1. Java 1.8
 2. Maven 3.x
 3. Chrome
+4. Optional: Firefox, I.E., Safari
 
 # Quick Start
 
