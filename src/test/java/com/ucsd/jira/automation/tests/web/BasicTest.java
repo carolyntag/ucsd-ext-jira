@@ -39,15 +39,15 @@ public class BasicTest extends JiraTestCase {
         webAction(LeftMenu.ISSUES);
         webElementVisible(combine(Constants.VARIABLE_BY_TEXT_SPAN, "Search issues"));
         redirect(Constants.HOME_URL);
-//        VS.
-//        webAction(Constants.CLOSE_MENU_EXPAND_SPAN);
+        //VS.
+        //webAction(Constants.CLOSE_MENU_EXPAND_SPAN);
 
         THEN("The expected pages are displayed");
         webAction(LeftMenu.DASHBOARD);
         webElementVisible(combine(Constants.VARIABLE_BY_TEXT_SPAN, "System dashboard"));
         redirect(Constants.HOME_URL);
-//        VS.
-//        webAction(Constants.CLOSE_MENU_EXPAND_SPAN);
+        //VS.
+        //webAction(Constants.CLOSE_MENU_EXPAND_SPAN);
 
         webAction(LeftMenu.PROJECTS);
         webElementVisible(combine(Constants.VARIABLE_BY_TEXT_HEADING, "Projects"));
