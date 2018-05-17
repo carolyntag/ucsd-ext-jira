@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import static com.pwc.logging.service.LoggerService.*;
 
 
-public class MatthewTesto extends JiraTestCase {
+public class MatthewTest extends JiraTestCase {
 
     @Override
     public void beforeMethod() {
@@ -24,7 +24,7 @@ public class MatthewTesto extends JiraTestCase {
     public int Method() {return 0x1e;}
     @Issue("Matthew-1234")
     @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
-    public void testBasic() {
+    public void testMatthew() {
 
         FEATURE("Basic Jira Test");
         SCENARIO("User logs in and validates basic navigation functionality");

@@ -5,7 +5,7 @@ import com.pwc.core.framework.listeners.Retry;
 import com.ucsd.jira.automation.data.Constants;
 import com.ucsd.jira.automation.data.enums.LeftMenu;
 import com.ucsd.jira.automation.frameworksupport.Groups;
-import com.ucsd.jira.automation.frameworksupport.JiraTestCase;
+import com.ucsd.jira.automation.frameworksupport.TrackforceTestCase;
 import org.testng.annotations.Test;
 
 import static com.pwc.logging.service.LoggerService.FEATURE;
@@ -15,7 +15,7 @@ import static com.pwc.logging.service.LoggerService.THEN;
 import static com.pwc.logging.service.LoggerService.WHEN;
 
 
-public class AnthonyTest extends JiraTestCase {
+public class TrackforceBasicTest extends TrackforceTestCase {
 
     @Override
     public void beforeMethod() {
@@ -25,33 +25,20 @@ public class AnthonyTest extends JiraTestCase {
     public void afterMethod() {
     }
 
-    @Issue("STORY-ANTHONY")
+    @Issue("STORY-1234")
     @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
-    public void testAnthony() {
+    public void testTrackforceBasic() {
 
-        FEATURE("Basic Jira Test");
+        FEATURE("Basic Trackforce Test");
         SCENARIO("User logs in and validates basic navigation functionality");
 
         GIVEN("I am a valid user");
-        webElementVisible(Constants.TEST_HEADING);
+        webAction("//a[contains(@href, 'support')]");
 
         WHEN("I navigate with the left menu");
-        webAction(LeftMenu.ISSUES);
-        webElementVisible(combine(Constants.VARIABLE_BY_TEXT_SPAN, "Search issues"));
-        redirect(Constants.HOME_URL);
-// VS.
-//        webAction(Constants.CLOSE_MENU_EXPAND_SPAN);
+        webElementTextExists("Trackforce Support is now online and real-time");
 
         THEN("The expected pages are displayed");
-        webAction(LeftMenu.DASHBOARD);
-        webElementVisible(combine(Constants.VARIABLE_BY_TEXT_SPAN, "System dashboard"));
-        redirect(Constants.HOME_URL);
-//        VS.
-//        webAction(Constants.CLOSE_MENU_EXPAND_SPAN);
-
-        webAction(LeftMenu.PROJECTS);
-        webElementVisible(combine(Constants.VARIABLE_BY_TEXT_HEADING, "Projects"));
-        webElementTextNotEquals(Constants.FIRST_PROJECTS_ANCHOR, "");
 
     }
 
