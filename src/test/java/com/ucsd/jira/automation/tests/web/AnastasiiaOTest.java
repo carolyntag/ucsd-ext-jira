@@ -28,6 +28,7 @@ public class AnastasiiaOTest extends JiraTestCase {
         FEATURE("Basic Jira Test");
         SCENARIO("User logs in and validates basic navigation functionality");
 
+        //test here
         GIVEN("I am a valid user");
         webElementVisible(Constants.TEST_HEADING);
 
