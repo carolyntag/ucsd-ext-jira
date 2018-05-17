@@ -26,7 +26,7 @@ public class MinervaTest extends JiraTestCase {
     public void testBasic() {
 
         FEATURE("Basic Jira Test");
-        SCENARIO("User logs in and validates basic navigation functionality");
+        SCENARIO("User logs in and validates basic navigation of functionality");
 
         GIVEN("I am a valid user");
         webElementVisible(Constants.TEST_HEADING);
