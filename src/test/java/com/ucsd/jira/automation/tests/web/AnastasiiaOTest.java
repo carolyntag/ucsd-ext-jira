@@ -21,7 +21,7 @@ public class AnastasiiaOTest extends JiraTestCase {
     public void afterMethod() {
     }
 
-    @Issue("STORY-ANASTASIIAO ")
+    @Issue("STORY-ANASTASIIAO")
     @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
     public void testBasic() {
 
