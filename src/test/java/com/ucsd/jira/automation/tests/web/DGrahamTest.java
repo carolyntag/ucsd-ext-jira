@@ -23,7 +23,7 @@ public class DGrahamTest extends JiraTestCase {
 
     @Issue("STORY-DGraham")
     @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
-    public void testBasic() {
+    public void testDGraham() {
 
         FEATURE("Basic Jira Test");
         SCENARIO("User logs in and validates basic navigation functionality");
