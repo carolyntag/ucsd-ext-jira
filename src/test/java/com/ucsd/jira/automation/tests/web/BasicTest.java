@@ -29,7 +29,7 @@ public class BasicTest extends JiraTestCase {
     @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
     public void testBasic() {
 
-        FEATURE("Basic Jira Test");
+        FEATURE("Basic Jira Test sneak developer");
         SCENARIO("User logs in and validates basic navigation functionality");
 
         GIVEN("I am a valid user");
