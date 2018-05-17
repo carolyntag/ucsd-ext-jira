@@ -21,7 +21,7 @@ public class LuisTest extends JiraTestCase {
     public void afterMethod() {
     }
 
-    @Issue("STORY-Luis")
+    @Issue("STORY-LuisC")
     @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
     public void testBasic() {
 
