@@ -23,10 +23,10 @@ public class MinervaTest extends JiraTestCase {
 
     @Issue("STORY-MINERVA")
     @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
-    public void testBasic() {
+    public void testMinerva() {
 
         FEATURE("Basic Jira Test");
-        SCENARIO("User logs in and validates basic navigation of functionality");
+        SCENARIO("User logs in and validates basic navigation functionality");
 
         GIVEN("I am a valid user");
         webElementVisible(Constants.TEST_HEADING);
