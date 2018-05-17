@@ -21,7 +21,7 @@ public class LadanTest extends JiraTestCase {
     public void afterMethod() {
     }
 
-    @Issue("STORY-LADAN-")
+    @Issue("STORY-LADAN-i")
     @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
     public void testBasic() {
 
