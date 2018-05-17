@@ -23,7 +23,7 @@ public class AnastasiiaOTest extends JiraTestCase {
 
     @Issue("STORY-ANASTASIIAO")
     @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
-    public void testBasic() {
+    public void testAnastasiiaO() {
 
         FEATURE("Basic Jira Test");
         SCENARIO("User logs in and validates basic navigation functionality");
