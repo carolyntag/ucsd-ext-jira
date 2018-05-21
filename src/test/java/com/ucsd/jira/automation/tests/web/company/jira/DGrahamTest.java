@@ -1,4 +1,4 @@
-package com.ucsd.jira.automation.tests.web;
+package com.ucsd.jira.automation.tests.web.company.jira;
 
 import com.pwc.core.framework.annotations.Issue;
 import com.pwc.core.framework.listeners.Retry;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import static com.pwc.logging.service.LoggerService.*;
 
 
-public class AnastasiiaOTest extends JiraTestCase {
+public class DGrahamTest extends JiraTestCase {
 
     @Override
     public void beforeMethod() {
@@ -21,14 +21,13 @@ public class AnastasiiaOTest extends JiraTestCase {
     public void afterMethod() {
     }
 
-    @Issue("STORY-ANASTASIIAO")
+    @Issue("STORY-DGraham")
     @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
-    public void testAnastasiiaO() {
+    public void testDGraham() {
 
-        FEATURE("Basic Jira Test changed underneath");
+        FEATURE("Basic Jira Test");
         SCENARIO("User logs in and validates basic navigation functionality");
 
-        //test here
         GIVEN("I am a valid user");
         webElementVisible(Constants.TEST_HEADING);
 
