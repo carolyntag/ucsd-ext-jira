@@ -25,7 +25,7 @@ public class AnastasiiaOTest extends JiraTestCase {
     @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
     public void testAnastasiiaO() {
 
-        FEATURE("Basic Jira Test");
+        FEATURE("Basic Jira Test changed underneath");
         SCENARIO("User logs in and validates basic navigation functionality");
 
         //test here

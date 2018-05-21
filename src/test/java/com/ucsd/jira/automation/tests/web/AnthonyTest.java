@@ -1,4 +1,4 @@
-package com.ucsd.jira.automation.tests.web.company.jira;
+package com.ucsd.jira.automation.tests.web;
 
 import com.pwc.core.framework.annotations.Issue;
 import com.pwc.core.framework.listeners.Retry;
@@ -15,7 +15,7 @@ import static com.pwc.logging.service.LoggerService.THEN;
 import static com.pwc.logging.service.LoggerService.WHEN;
 
 
-public class BasicTest extends JiraTestCase {
+public class AnthonyTest extends JiraTestCase {
 
     @Override
     public void beforeMethod() {
@@ -25,11 +25,11 @@ public class BasicTest extends JiraTestCase {
     public void afterMethod() {
     }
 
-    @Issue("STORY-1234")
+    @Issue("STORY-ANTHONY")
     @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
     public void testBasic() {
 
-        FEATURE("Basic Jira Test sneak developer");
+        FEATURE("Basic Jira Test");
         SCENARIO("User logs in and validates basic navigation functionality");
 
         GIVEN("I am a valid user");
