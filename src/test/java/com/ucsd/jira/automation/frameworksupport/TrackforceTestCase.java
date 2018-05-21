@@ -1,14 +1,12 @@
 package com.ucsd.jira.automation.frameworksupport;
 
 import com.pwc.core.framework.FrameworkConstants;
-import com.pwc.core.framework.JavascriptConstants;
 import com.pwc.core.framework.WebTestCase;
 import com.pwc.core.framework.command.WebServiceCommand;
 import com.pwc.core.framework.data.Credentials;
 import com.ucsd.jira.automation.data.Constants;
 import com.ucsd.jira.automation.data.Data;
-import com.ucsd.jira.automation.data.enums.JiraMenu;
-import com.ucsd.jira.automation.data.enums.LeftMenu;
+import com.ucsd.jira.automation.data.TrackforceConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -40,7 +38,7 @@ public abstract class TrackforceTestCase extends WebTestCase {
         }
 
         if (!isHeadlessMode()) {
-            webAction("//a[@id='logo']");
+            webAction(TrackforceConstants.LOGO_ANCHOR);
         }
     }
 

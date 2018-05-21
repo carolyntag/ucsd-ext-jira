@@ -1,4 +1,4 @@
-package com.ucsd.jira.automation.tests.web;
+package com.ucsd.jira.automation.tests.web.company.jira;
 
 import com.pwc.core.framework.annotations.Issue;
 import com.pwc.core.framework.listeners.Retry;
@@ -8,14 +8,10 @@ import com.ucsd.jira.automation.frameworksupport.Groups;
 import com.ucsd.jira.automation.frameworksupport.JiraTestCase;
 import org.testng.annotations.Test;
 
-import static com.pwc.logging.service.LoggerService.FEATURE;
-import static com.pwc.logging.service.LoggerService.GIVEN;
-import static com.pwc.logging.service.LoggerService.SCENARIO;
-import static com.pwc.logging.service.LoggerService.THEN;
-import static com.pwc.logging.service.LoggerService.WHEN;
+import static com.pwc.logging.service.LoggerService.*;
 
 
-public class AnthonyTest extends JiraTestCase {
+public class AnastasiiaOTest extends JiraTestCase {
 
     @Override
     public void beforeMethod() {
@@ -25,13 +21,14 @@ public class AnthonyTest extends JiraTestCase {
     public void afterMethod() {
     }
 
-    @Issue("STORY-ANTHONY")
+    @Issue("STORY-ANASTASIIAO")
     @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
-    public void testAnthony() {
+    public void testAnastasiiaO() {
 
         FEATURE("Basic Jira Test");
         SCENARIO("User logs in and validates basic navigation functionality");
 
+        //test here
         GIVEN("I am a valid user");
         webElementVisible(Constants.TEST_HEADING);
 
