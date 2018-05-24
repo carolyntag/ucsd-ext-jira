@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import static com.pwc.logging.service.LoggerService.*;
 
 
-public class LAKSHMITEST extends JiraTestCase {
+public class LakshmiTest extends JiraTestCase {
 
     @Override
     public void beforeMethod() {
@@ -23,7 +23,7 @@ public class LAKSHMITEST extends JiraTestCase {
 
     @Issue("STORY-LAKSHMI")
     @Test(retryAnalyzer = Retry.class, groups = {Groups.ACCEPTANCE_TEST})
-    public void testBasic() {
+    public void testLakshmi() {
 
         FEATURE("Basic Jira Test");
         SCENARIO("User logs in and validates basic navigation functionality");
