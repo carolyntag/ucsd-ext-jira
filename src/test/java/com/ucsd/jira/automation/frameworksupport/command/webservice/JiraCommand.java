@@ -4,10 +4,8 @@ import com.pwc.core.framework.FrameworkConstants;
 
 public enum JiraCommand implements com.pwc.core.framework.command.WebServiceCommand {
 
-    DELETE_ISSUE(FrameworkConstants.DELETE_REQUEST, "issue", ""),
-    GET_SEARCH_BY_QUERY(FrameworkConstants.GET_REQUEST, "productsearch", "search"),
-    GET_SEARCH(FrameworkConstants.GET_REQUEST, "search", ""),
-    GET_RECENT_SEARCH(FrameworkConstants.GET_REQUEST, "productsearch", "search?q=");
+    DELETE_ISSUE(FrameworkConstants.DELETE_REQUEST, "issue", ""), GET_SEARCH_BY_QUERY(FrameworkConstants.GET_REQUEST, "productsearch", "search"), GET_SEARCH(FrameworkConstants.GET_REQUEST, "search",
+                    ""), GET_RECENT_SEARCH(FrameworkConstants.GET_REQUEST, "productsearch", "search?q=");
 
     private String requestMethodType;
     private String requestMapping;

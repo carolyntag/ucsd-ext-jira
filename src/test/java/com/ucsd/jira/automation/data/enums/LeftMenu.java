@@ -2,10 +2,9 @@ package com.ucsd.jira.automation.data.enums;
 
 public enum LeftMenu implements JiraMenu {
 
-    CREATE("Create"),
-    DASHBOARD("Dashboards"),
+    DASHBOARDS("Dashboards"),
     PROJECTS("Projects"),
-    ISSUES("Issues"),
+    ISSUES("Issues and filters"),
     SEARCH("Search");
 
     String primaryMenu;

@@ -33,9 +33,9 @@ public class AutomationStandardsTest {
     @Before
     public void setUp() {
         File directory = PropertiesUtils.getFileFromResources(WEB_TEST_DIRECTORY_LOCATION);
-        allFiles.addAll(FileUtils.listFiles(directory, new String[]{"class"}, true));
+        allFiles.addAll(FileUtils.listFiles(directory, new String[] {"class"}, true));
         directory = PropertiesUtils.getFileFromResources(API_TEST_DIRECTORY_LOCATION);
-        allFiles.addAll(FileUtils.listFiles(directory, new String[]{"class"}, true));
+        allFiles.addAll(FileUtils.listFiles(directory, new String[] {"class"}, true));
 
         for (File allFile : allFiles) {
             if (allFile.getName().contains("Test.class")) {

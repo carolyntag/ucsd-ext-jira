@@ -76,7 +76,7 @@ public abstract class JiraTestCase extends WebTestCase {
 
         long duration = 0;
         if (menuIdentifier instanceof LeftMenu) {
-            duration = super.webAction(combine(Constants.VARIABLE_BY_LABEL_SPAN, menuIdentifier.getPrimaryMenu()));
+            duration = super.webAction(combine(Constants.VARIABLE_BY_TEXT_DIV, menuIdentifier.getPrimaryMenu()));
         }
         return duration;
     }

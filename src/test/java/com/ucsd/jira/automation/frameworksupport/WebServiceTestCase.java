@@ -76,8 +76,7 @@ public abstract class WebServiceTestCase extends JiraTestCase {
         });
 
         for (HashMap recentIssue : recentIssueList) {
-            if (StringUtils.equalsIgnoreCase(recentIssue.get("metadata").toString(), expectedIssueNumber) &&
-                    StringUtils.containsIgnoreCase(recentIssue.get("avatarUrl").toString(), "story.svg")) {
+            if (StringUtils.equalsIgnoreCase(recentIssue.get("metadata").toString(), expectedIssueNumber) && StringUtils.containsIgnoreCase(recentIssue.get("avatarUrl").toString(), "story.svg")) {
                 issue.setMetadata(recentIssue.get("metadata").toString());
                 issue.setAvatarUrl(recentIssue.get("avatarUrl").toString());
                 issue.setSubTitle(recentIssue.get("subtitle").toString());
