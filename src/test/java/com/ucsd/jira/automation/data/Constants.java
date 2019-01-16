@@ -39,7 +39,7 @@ public final class Constants {
     public static final String NO_RECORDS_FOUND_TEXT = "No records found, try new search criteria.";
 
     //DIV Elements
-    public static final String VARIABLE_BY_TEXT_DIV= "//div[text()='%s']";
+    public static final String VARIABLE_BY_TEXT_DIV = "//div[text()='%s']";
     public static final String ISSUES_SEARCH_PREVIEW_DIV = "//div[@aria-label='Issues']";
     public static final String BOARDS_SEARCH_PREVIEW_DIV = "//div[@aria-label='Boards']";
     public static final String PROJECTS_SEARCH_PREVIEW_DIV = "//div[@aria-label='Projects']";
