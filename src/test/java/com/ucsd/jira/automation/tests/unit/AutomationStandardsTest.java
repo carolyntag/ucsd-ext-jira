@@ -1,6 +1,9 @@
 package com.ucsd.jira.automation.tests.unit;
 
 import com.pwc.core.framework.util.PropertiesUtils;
+import com.strobel.decompiler.Decompiler;
+import com.strobel.decompiler.DecompilerSettings;
+import com.strobel.decompiler.PlainTextOutput;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.After;
@@ -10,6 +13,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -17,6 +21,7 @@ import java.util.List;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class AutomationStandardsTest {
 
@@ -41,7 +46,7 @@ public class AutomationStandardsTest {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
     }
 
     @Test()
@@ -81,7 +86,7 @@ public class AutomationStandardsTest {
     }
 
     @Test
-    public void testNameEndsWithTest() throws IOException {
+    public void testNameEndsWithTest() {
 
         for (File testFile : allTestFiles) {
 
@@ -128,7 +133,7 @@ public class AutomationStandardsTest {
     }
 
     @Test
-    public void testGherkinLoggingPresent() throws Exception {
+    public void testGherkinLoggingPresent() {
 
         for (File testFile : allTestFiles) {
 
@@ -144,7 +149,7 @@ public class AutomationStandardsTest {
     }
 
     @Test
-    public void testGroupNamesPresent() throws Exception {
+    public void testGroupNamesPresent() {
 
         for (File testFile : allTestFiles) {
 
@@ -158,8 +163,72 @@ public class AutomationStandardsTest {
 
     }
 
-    private List<String> readCompiledClass(File testFile) {
-        return com.pwc.core.framework.util.FileUtils.readFile(testFile, testFile.getName());
+    @Test
+    public void testSystemOutPresent() {
+
+        for (File testFile : allTestFiles) {
+
+            List<String> testContents = readCompiledClass(testFile);
+            for (String testContent : testContents) {
+                if (testContent.contains("System") && testContent.contains("out")) {
+                    assertFalse("JDK Native 'System.out' usages present in test='" + testFile.getName() + "'", testContent.contains("System"));
+                }
+            }
+        }
+
+    }
+
+    @Test
+    public void testThreadSleepPresent() {
+
+        for (File testFile : allTestFiles) {
+
+            List<String> testContents = readCompiledClass(testFile);
+            for (String testContent : testContents) {
+                if (testContent.contains("Thread") && testContent.contains("sleep")) {
+                    assertFalse("'Thread.sleep' is present in test='" + testFile.getName() + "'", testContent.contains("Thread") && testContent.contains("sleep"));
+                }
+            }
+        }
+
+    }
+
+    /**
+     * Read non-decompiled class contents
+     *
+     * @param classFile class to read
+     * @return non-decompiled class content
+     */
+    private List<String> readCompiledClass(File classFile) {
+        return com.pwc.core.framework.util.FileUtils.readFile(classFile, classFile.getName());
+    }
+
+    /**
+     * Read and decompile class contents into readable <code>String[]</code>
+     *
+     * @param classFile class to decompile
+     * @return String array of decompiled code
+     * @throws IOException
+     */
+    private String[] decompileClassToArray(File classFile) throws IOException {
+
+        String OPEN = "\"";
+        String CLOSE = "\"";
+        String[] stringsArray;
+        final StringWriter stringWriter = new StringWriter();
+
+        try {
+            final DecompilerSettings settings = DecompilerSettings.javaDefaults();
+            settings.setIncludeErrorDiagnostics(true);
+            Decompiler.decompile(classFile.getPath(), new PlainTextOutput(stringWriter), settings);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            stringsArray = StringUtils.substringsBetween(stringWriter.getBuffer().toString(), OPEN, CLOSE);
+            stringWriter.close();
+        }
+
+        return stringsArray;
     }
 
 }
