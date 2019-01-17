@@ -33,24 +33,16 @@ public class BasicTest extends JiraTestCase {
         SCENARIO("User logs in and validates basic navigation functionality");
 
         GIVEN("I am a valid user");
-        webElementVisible(Constants.TEST_HEADING);
+        webElementVisible(Constants.NEW_TEST_HEADING);
 
         WHEN("I navigate with the left menu");
-        webAction(LeftMenu.ISSUES);
+        webAction(Constants.ISSUES_AND_FILTERS_DIV);
         redirect(Constants.HOME_URL);
-        // VS.
-        //        webAction(Constants.CLOSE_MENU_EXPAND_SPAN);
 
         THEN("The expected pages are displayed");
-        webAction(LeftMenu.DASHBOARDS);
-        webElementVisible(combine(Constants.VARIABLE_BY_TEXT_SPAN, "System dashboard"));
-        redirect(Constants.HOME_URL);
-        //        VS.
-        //        webAction(Constants.CLOSE_MENU_EXPAND_SPAN);
+        webAction(Constants.DASHBOARD_DIV);
 
-        webAction(LeftMenu.PROJECTS);
-        webElementVisible(combine(Constants.VARIABLE_BY_TEXT_HEADING, "Projects"));
-        webElementTextNotEquals(Constants.FIRST_PROJECTS_ANCHOR, "");
+        redirect(Constants.HOME_URL);
 
     }
 
