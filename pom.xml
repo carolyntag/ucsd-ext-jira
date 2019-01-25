@@ -309,19 +309,19 @@
       </plugins>
     </pluginManagement>
     <plugins>
-      <plugin>
-        <groupId>net.revelc.code.formatter</groupId>
-        <artifactId>formatter-maven-plugin</artifactId>
-        <version>${format-maven-plugin.version}</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>validate</goal>
-            </goals>
-            <phase>verify</phase>
-          </execution>
-        </executions>
-      </plugin>
+      <!--<plugin>-->
+      <!--<groupId>net.revelc.code.formatter</groupId>-->
+      <!--<artifactId>formatter-maven-plugin</artifactId>-->
+      <!--<version>${format-maven-plugin.version}</version>-->
+      <!--<executions>-->
+      <!--<execution>-->
+      <!--<goals>-->
+      <!--<goal>validate</goal>-->
+      <!--</goals>-->
+      <!--<phase>verify</phase>-->
+      <!--</execution>-->
+      <!--</executions>-->
+      <!--</plugin>-->
       <plugin>
         <groupId>com.github.ekryd.sortpom</groupId>
         <artifactId>sortpom-maven-plugin</artifactId>
