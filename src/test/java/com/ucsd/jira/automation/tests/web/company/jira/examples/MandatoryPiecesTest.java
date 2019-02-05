@@ -1,4 +1,4 @@
-package com.ucsd.jira.automation.tests.web.company.jira;
+package com.ucsd.jira.automation.tests.web.company.jira.examples;
 
 import com.ucsd.jira.automation.frameworksupport.Groups;
 import org.junit.Assert;

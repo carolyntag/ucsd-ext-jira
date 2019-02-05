@@ -1,4 +1,4 @@
-package com.ucsd.jira.automation.tests.web.company.jira;
+package com.ucsd.jira.automation.tests.web.company.jira.examples;
 
 import com.pwc.core.framework.annotations.Issue;
 import com.pwc.core.framework.listeners.Retry;
