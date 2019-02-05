@@ -1,17 +1,21 @@
-package com.ucsd.jira.automation.tests.web.company.jira;
+package com.ucsd.jira.automation.tests.web.company.jira.examples;
 
 import com.ucsd.jira.automation.frameworksupport.Groups;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
-public class ImplicitNavigationTest {
+public class FluentNavigationTest {
 
     @BeforeTest
     public static void setUp() {
@@ -24,12 +28,15 @@ public class ImplicitNavigationTest {
     }
 
     @Test(groups = {Groups.ACCEPTANCE_TEST})
-    public void testImplicitNavigation() {
+    public void testFluentNavigation() {
 
         System.setProperty("webdriver.chrome.driver", "C:\\workspace\\ucsd-ext-jira\\target\\test-classes\\drivers\\chrome\\chrome_win.exe");
         WebDriver driver = new ChromeDriver();
 
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        Wait wait = new FluentWait(driver)
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofMillis(10))
+                .ignoring(Exception.class);
 
         driver.get("https://ucsd-ext.atlassian.net");
         driver.manage().window().maximize();
@@ -37,11 +44,13 @@ public class ImplicitNavigationTest {
         driver.findElement(By.xpath("//input[@id='username']")).sendKeys("ucsd.ext1@gmail.com");
         driver.findElement(By.xpath("//span[text()='Continue']")).click();
 
-        driver.findElement(By.xpath("//input[@id='password']")).sendKeys("Murray08");
+        WebElement passwordElement = (WebElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='password']")));
+        passwordElement.sendKeys("Murray08");
 
         driver.findElement(By.xpath("//span[text()='Log in']")).click();
 
-        Assert.assertTrue("Dashboard item is displayed", driver.findElement(By.xpath("//div[text()='Dashboards']")).isDisplayed());
+        WebElement dashboardElement = (WebElement) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[text()='Dashboards']")));
+        Assert.assertTrue("Dashboard item is displayed", dashboardElement.isDisplayed());
 
         driver.quit();
 
