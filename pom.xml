@@ -43,7 +43,7 @@
     <assert-microservice.version>1.0.2</assert-microservice.version>
     <com.oracle.ojdbc6.version>12.1.0.1</com.oracle.ojdbc6.version>
     <commons-codec.version>1.9</commons-codec.version>
-    <commons.io.version>2.4</commons.io.version>
+    <commons.io.version>2.7</commons.io.version>
     <commons.lang.version>2.6</commons.lang.version>
     <commonsdbcp2.version>2.0</commonsdbcp2.version>
     <core-microservice.version>2.0.51</core-microservice.version>
