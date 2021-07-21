@@ -27,7 +27,7 @@ public class ProductSearchTest extends WebServiceTestCase {
 
     @BeforeTest(alwaysRun = true)
     public void beforeTest() {
-        setHeadlessMode(true);
+        setHeadlessMode(false);
     }
 
     @Override

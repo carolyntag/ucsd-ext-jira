@@ -1,15 +1,13 @@
 package com.ucsd.jira.automation.tests.web.company.jira;
-//this
+
 import com.pwc.core.framework.annotations.Issue;
 import com.pwc.core.framework.listeners.Retry;
 import com.ucsd.jira.automation.data.Constants;
 import com.ucsd.jira.automation.data.enums.LeftMenu;
 import com.ucsd.jira.automation.frameworksupport.Groups;
 import com.ucsd.jira.automation.frameworksupport.JiraTestCase;
-import org.junit.Assert;
 import org.testng.annotations.Test;
 
-import static com.pwc.assertion.AssertService.assertEquals;
 import static com.pwc.logging.service.LoggerService.FEATURE;
 import static com.pwc.logging.service.LoggerService.GIVEN;
 import static com.pwc.logging.service.LoggerService.SCENARIO;
