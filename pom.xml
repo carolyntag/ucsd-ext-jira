@@ -52,7 +52,7 @@
     <format-maven-plugin.version>2.0.1</format-maven-plugin.version>
     <jackson.json.version>2.9.7</jackson.json.version>
     <java_code.version>1.8</java_code.version>
-    <jsoup.version>1.8.2</jsoup.version>
+    <jsoup.version>1.14.2</jsoup.version>
     <log4j.version>1.2.17</log4j.version>
     <logging-microservice.version>1.0.4</logging-microservice.version>
     <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
